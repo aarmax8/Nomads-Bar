@@ -13,6 +13,34 @@
             flex-direction: column;
             overflow: hidden;
         }
+async function generateAndPlaceLogo(drinkName) {
+    const container = document.querySelector(`.drink-card-title-container[data-logo-name="${drinkName}"]`);
+    if (!container || container.querySelector('img') || container.querySelector('h3')) return;
+    if (generatedLogosCache[drinkName]) {
+        container.innerHTML = `<img src="${generatedLogosCache[drinkName]}" alt="${drinkName} logo" class="drink-card-logo">`;
+        return;
+    }
+    const imagePrompt = `A gritty, distressed, cool biker-style logo for a drink called "${drinkName}". The logo is on a dark, textured background. The text is the main focus, using a bold, worn-out font. No realistic glass or liquid.`;
+    const payload = {
+        contents: [{ parts: [{ text: imagePrompt }] }],
+        generationConfig: { responseModalities: ['TEXT', 'IMAGE'] }
+    };
+    
+    try {
+        const response = await fetch(imageApiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const result = await response.json();
+        const base64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
+        if (base64Data) {
+            const imageUrl = `data:image/png;base64,${base64Data}`;
+            generatedLogosCache[drinkName] = imageUrl;
+            container.innerHTML = `<img src="${imageUrl}" alt="${drinkName} logo" class="drink-card-logo">`;
+        } else { throw new Error("No image data in API response."); }
+    } catch (error) {
+        console.error(`Logo generation failed for ${drinkName}:`, error);
+        container.innerHTML = `<div class="flex items-center justify-center p-2"><h3 class="drink-card-title-fallback">${drinkName}</h3><button class="retry-logo-btn" data-retry-name="${drinkName}" title="Retry logo generation"><i class="fas fa-sync-alt"></i></button></div>`;
+    }
+}
         .drink-card-back { 
             transform: rotateY(180deg); 
             background-image: linear-gradient(to bottom right, #2d3748, #1a202c), url('https://www.transparenttextures.com/patterns/worn-dots.png');
