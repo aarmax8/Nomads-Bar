@@ -309,15 +309,14 @@
             transform: scale(1.05);
         }
 
-        /* --- STICKY BOTTOM FILTER BAR --- */
+        /* --- FILTER BAR (MOVED) --- */
         .filter-bar-container {
-            position: sticky;
-            bottom: 0;
-            z-index: 40;
-            background-color: #111827; /* Darker than body bg */
-            background-image: linear-gradient(to top, rgba(17, 24, 39, 1) 50%, rgba(17, 24, 39, 0.9));
-            box-shadow: 0 -10px 20px rgba(0,0,0,0.5);
-            border-top: 2px solid #374151; /* Gray-700 */
+            margin-top: 2rem;
+            border-radius: 0.5rem;
+            border: 1px solid #374151;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            background-color: #111827;
+            overflow: hidden; /* To contain the rounded corners on children */
         }
         #category-filter-nav, #flavor-filter-nav {
             display: flex;
@@ -340,7 +339,7 @@
         }
         
         footer {
-            padding-bottom: 120px; /* Reduced padding */
+            padding-bottom: 2rem; /* Reduced padding from 120px */
         }
 
         /* --- INTERACTIVE BAR STOCK --- */
@@ -399,30 +398,28 @@
         <main id="menu-grid" class="mt-4">
         </main>
 
+        <div class="filter-bar-container">
+            <nav id="flavor-filter-nav" class="gap-2"></nav>
+            <nav id="category-filter-nav" class="gap-2">
+                <button data-category="all" class="filter-btn active-filter">All</button>
+                <button data-category="signature" class="filter-btn"><i class="fas fa-skull mr-2 text-amber-400"></i>Signature</button>
+                <button data-category="classics" class="filter-btn"><i class="fas fa-trophy mr-2 text-yellow-500"></i>Classics</button>
+                <button data-category="whiskey" class="filter-btn"><i class="fas fa-whiskey-glass mr-2 text-orange-400"></i>Whiskey</button>
+                <button data-category="vodka" class="filter-btn"><i class="fas fa-skull-crossbones mr-2 text-blue-300"></i>Vodka</button>
+                <button data-category="gin" class="filter-btn"><i class="fas fa-leaf mr-2 text-green-400"></i>Gin</button>
+                <button data-category="rum" class="filter-btn"><i class="fas fa-anchor mr-2 text-yellow-800"></i>Rum</button>
+                <button data-category="dogs" class="filter-btn"><i class="fas fa-dog mr-2 text-stone-500"></i>Dogs</button>
+                <button data-category="tequila" class="filter-btn"><i class="fas fa-hat-cowboy-side mr-2 text-yellow-600"></i>Tequila</button>
+                <button data-category="schnapps" class="filter-btn"><i class="fas fa-mortar-pestle mr-2 text-purple-400"></i>Liqueurs</button>
+            </nav>
+        </div>
+
         <footer class="mt-12 md:mt-20 pt-8 border-t-2 border-gray-700 text-center">
             <!-- Content was moved to the header -->
         </footer>
 
     </div>
     
-    <!-- Filter bar -->
-    <div class="filter-bar-container">
-        <nav id="flavor-filter-nav" class="gap-2"></nav>
-        <nav id="category-filter-nav" class="gap-2">
-            <button data-category="all" class="filter-btn active-filter">All</button>
-            <button data-category="signature" class="filter-btn"><i class="fas fa-skull mr-2 text-amber-400"></i>Signature</button>
-            <button data-category="classics" class="filter-btn"><i class="fas fa-trophy mr-2 text-yellow-500"></i>Classics</button>
-            <button data-category="whiskey" class="filter-btn"><i class="fas fa-whiskey-glass mr-2 text-orange-400"></i>Whiskey</button>
-            <button data-category="vodka" class="filter-btn"><i class="fas fa-skull-crossbones mr-2 text-blue-300"></i>Vodka</button>
-            <button data-category="gin" class="filter-btn"><i class="fas fa-leaf mr-2 text-green-400"></i>Gin</button>
-            <button data-category="rum" class="filter-btn"><i class="fas fa-anchor mr-2 text-yellow-800"></i>Rum</button>
-            <button data-category="dogs" class="filter-btn"><i class="fas fa-dog mr-2 text-stone-500"></i>Dogs</button>
-            <button data-category="tequila" class="filter-btn"><i class="fas fa-hat-cowboy-side mr-2 text-yellow-600"></i>Tequila</button>
-            <button data-category="schnapps" class="filter-btn"><i class="fas fa-mortar-pestle mr-2 text-purple-400"></i>Liqueurs</button>
-        </nav>
-    </div>
-
-
     <!-- Modals -->
     <div id="story-modal" class="modal fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 hidden opacity-0 z-50">
         <div class="bg-gray-800 rounded-lg shadow-xl w-full max-w-2xl max-h-[95vh] overflow-y-auto border border-gray-600">
