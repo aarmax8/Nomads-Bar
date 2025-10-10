@@ -1,486 +1,548 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <!-- Corrected Version: October 9, 2025 -->
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>NOMADS</title>
-   
-   <!-- === PWA / Add to Home Screen Meta Tags === -->
-   <meta name="apple-mobile-web-app-capable" content="yes">
-   <meta name="mobile-web-app-capable" content="yes">
-   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-   <meta name="apple-mobile-web-app-title" content="Nomads Menu">
-   <meta name="application-name" content="Nomads Menu">
-   <link rel="apple-touch-icon" href="https://placehold.co/180x180/111827/f59e0b?text=N">
-   <link rel="icon" sizes="192x192" href="https://placehold.co/192x192/111827/f59e0b?text=N">
-   <link rel="icon" sizes="512x512" href="https://placehold.co/512x512/111827/f59e0b?text=N">
+      <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>NOMADS</title>
+   
+      <meta name="apple-mobile-web-app-capable" content="yes">
+   <meta name="mobile-web-app-capable" content="yes">
+   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+   <meta name="apple-mobile-web-app-title" content="Nomads Menu">
+   <meta name="application-name" content="Nomads Menu">
+   <link rel="apple-touch-icon" href="https://placehold.co/180x180/111827/f59e0b?text=N">
+   <link rel="icon" sizes="192x192" href="https://placehold.co/192x192/111827/f59e0b?text=N">
+   <link rel="icon" sizes="512x512" href="https://placehold.co/512x512/111827/f59e0b?text=N">
 
-   <script src="https://cdn.tailwindcss.com"></script>
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Roboto+Condensed:ital,wght@0,700;1,400&family=Roboto:ital,wght@0,400;0,500;1,700&family=Rye&family=Bangers&family=Creepster&family=Metal+Mania&family=Nosifier&family=UnifrakturMaguntia&family=Permanent+Marker&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Roboto+Condensed:ital,wght@0,700;1,400&family=Roboto:ital,wght@0,400;0,500;1,700&family=Rye&family=Bangers&family=Creepster&family=Metal+Mania&family=Nosifier&family=UnifrakturMaguntia&family=Permanent+Marker&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-   <style>
-       html {
-           scroll-behavior: smooth;
-       }
-       body {
-           font-family: 'Roboto', sans-serif;
-           background-color: #1a110a; /* Dark wood fallback */
-           background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://www.transparenttextures.com/patterns/wood-pattern.png');
-           background-attachment: fixed;
-       }
-       
-       /* --- HEADER STYLES --- */
-       #header-logo-container {
-           position: relative;
-           background-image: url('https://i.ibb.co/2VRJqsk/20241009-114435.png');
-           background-size: cover;
-           background-position: center top;
-           background-repeat: no-repeat;
-           border-radius: 0.5rem; 
-           box-shadow: 0 8px 16px rgba(0,0,0,0.8);
-           overflow: hidden; 
-       }
-       #header-logo-container::before {
-           content: ''; position: absolute; inset: 0;
-           background-color: rgba(0, 0, 0, 0.4); 
-           box-shadow: inset 0 0 20px 10px rgba(0,0,0,0.9);
-           border: 2px solid #4b5563; border-radius: 0.5rem;
-       }
-       #header-logo-container h1 {
-           position: relative; 
-           font-family: 'Black Ops One', cursive;
-           font-size: 2.5rem; 
-           color: #f59e0b; 
-           text-shadow: 3px 3px 0px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,1);
-           letter-spacing: 0.1em; 
-           z-index: 10; 
-           line-height: 1; 
-       }
-       @media (min-width: 640px) { 
-           #header-logo-container h1 { 
-               font-size: 3.5rem; 
-           } 
-       }
+   <style>
+       html {
+           scroll-behavior: smooth;
+       }
+       body {
+           font-family: 'Roboto', sans-serif;
+           background-color: #1a110a; /* Dark wood fallback */
+           background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+           background-attachment: fixed;
+       }
+       
+       /* --- HEADER STYLES --- */
+       #header-logo-container {
+           position: relative;
+           /* Using local image as fallback, will be replaced by Gemini image on load */
+           background-image: url('https://i.ibb.co/2VRJqsk/20241009-114435.png');
+           background-size: cover;
+           background-position: center top;
+           background-repeat: no-repeat;
+           border-radius: 0.5rem; 
+           box-shadow: 0 8px 16px rgba(0,0,0,0.8);
+           overflow: hidden; 
+       }
+       #header-logo-container::before {
+           content: ''; position: absolute; inset: 0;
+           background-color: rgba(0, 0, 0, 0.4); 
+           box-shadow: inset 0 0 20px 10px rgba(0,0,0,0.9);
+           border: 2px solid #4b5563; border-radius: 0.5rem;
+       }
+       #header-logo-container h1 {
+           position: relative; 
+           font-family: 'Black Ops One', cursive;
+           font-size: 2.5rem; 
+           color: #f59e0b; 
+           text-shadow: 3px 3px 0px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,1);
+           letter-spacing: 0.1em; 
+           z-index: 10; 
+           line-height: 1; 
+       }
+       /* Image placeholder for drink card titles */
+        .drink-card-logo-area {
+            position: relative;
+            min-height: 200px; /* Reduced min-height for smaller cards */
+            background-color: #111827;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+        .drink-card-title-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .drink-card-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .drink-image-container {
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 0.375rem;
+        }
+        .title-loader {
+            border: 3px solid #4b5563;
+            border-top: 3px solid #f59e0b;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .retry-logo-btn {
+            background: none;
+            border: none;
+            color: #9ca3af;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0.5rem;
+            margin-left: 0.5rem;
+            transition: all 0.2s ease-in-out;
+            position: relative;
+            z-index: 20;
+        }
+        .retry-logo-btn:hover {
+            color: #f59e0b;
+            transform: rotate(90deg);
+        }
 
-       h2, h3 {
-           font-family: 'Black Ops One', cursive;
-           text-shadow: 1px 1px 0 #000, 2px 2px 0 #333;
-           letter-spacing: 0.05em;
-       }
-       /* Adjusted base h3 for cards, specific fonts applied via JS */
-       .drink-card h3 {
-           letter-spacing: normal;
-       }
-       .modal h2 {
-           font-family: 'Rye', cursive;
-           text-shadow: 2px 2px 0 #000;
-       }
+       @media (min-width: 640px) { 
+           #header-logo-container h1 { 
+               font-size: 3.5rem; 
+           } 
+       }
 
-       /* --- Custom Font Classes --- */
-       .font-rye { font-family: 'Rye', cursive; }
-       .font-bangers { font-family: 'Bangers', cursive; }
-       .font-creepster { font-family: 'Creepster', cursive; }
-       .font-metal-mania { font-family: 'Metal Mania', cursive; }
-       .font-nosifier { font-family: 'Nosifier', cursive; }
-       .font-unifrakturmaguntia { font-family: 'UnifrakturMaguntia', cursive; }
-       .font-permanent-marker { font-family: 'Permanent Marker', cursive; }
-       .font-black-ops { font-family: 'Black Ops One', cursive; }
+       h2, h3 {
+           font-family: 'Black Ops One', cursive;
+           text-shadow: 1px 1px 0 #000, 2px 2px 0 #333;
+           letter-spacing: 0.05em;
+       }
+       /* Adjusted base h3 for cards, specific fonts applied via JS */
+       .drink-card h3 {
+           letter-spacing: normal;
+       }
+       .modal h2 {
+           font-family: 'Rye', cursive;
+           text-shadow: 2px 2px 0 #000;
+       }
 
-       /* --- FLIPPABLE CARD STYLES --- */
-       .drink-card {
-           background-color: transparent;
-           perspective: 1500px;
-           cursor: pointer;
-           min-height: 320px; /* Shorter for mobile */
-       }
-       .drink-card-inner {
-           position: relative;
-           width: 100%;
-           height: 100%;
-           transition: transform 0.7s;
-           transform-style: preserve-3d;
-           box-shadow: 0 8px 20px rgba(0,0,0,0.7);
-           border-radius: 0.5rem;
-       }
-       .drink-card.is-flipped .drink-card-inner {
-           transform: rotateY(180deg);
-       }
-       .drink-card-front, .drink-card-back {
-           position: absolute;
-           width: 100%;
-           height: 100%;
-           -webkit-backface-visibility: hidden;
-           backface-visibility: hidden;
-           display: flex;
-           flex-direction: column;
-           overflow: hidden;
-           border-radius: 0.5rem;
-           background-color: #1a202c;
-           background-image: linear-gradient(to bottom right, #2d3748, #1a202c);
-           border: 1px solid #4b5563;
-           box-shadow: inset 0 0 15px rgba(0,0,0,0.7);
-           padding: 1rem;
-       }
-       .drink-card-back {
-           transform: rotateY(180deg);
-       }
+       /* --- Custom Font Classes --- */
+       .font-rye { font-family: 'Rye', cursive; }
+       .font-bangers { font-family: 'Bangers', cursive; }
+       .font-creepster { font-family: 'Creepster', cursive; }
+       .font-metal-mania { font-family: 'Metal Mania', cursive; }
+       .font-nosifier { font-family: 'Nosifier', cursive; }
+       .font-unifrakturmaguntia { font-family: 'UnifrakturMaguntia', cursive; }
+       .font-permanent-marker { font-family: 'Permanent Marker', cursive; }
+       .font-black-ops { font-family: 'Black Ops One', cursive; }
 
-       .font-condensed {
-           font-family: 'Roboto Condensed', sans-serif;
-       }
-       .recipe-list {
-           list-style: disc;
-           margin-left: 1.5rem;
-           line-height: 1.6;
-       }
-       .modal {
-           transition: opacity 0.3s ease-in-out;
-       }
+       /* --- FLIPPABLE CARD STYLES --- */
+       .drink-card {
+           background-color: transparent;
+           perspective: 1500px;
+           cursor: pointer;
+           min-height: 400px; /* Increased to accommodate logo area */
+       }
+       .drink-card-inner {
+           position: relative;
+           width: 100%;
+           height: 100%;
+           transition: transform 0.7s;
+           transform-style: preserve-3d;
+           box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+           border-radius: 0.5rem;
+       }
+       .drink-card.is-flipped .drink-card-inner {
+           transform: rotateY(180deg);
+       }
+       .drink-card-front, .drink-card-back {
+           position: absolute;
+           width: 100%;
+           height: 100%;
+           -webkit-backface-visibility: hidden;
+           backface-visibility: hidden;
+           display: flex;
+           flex-direction: column;
+           overflow: hidden;
+           border-radius: 0.5rem;
+           background-color: #1a202c;
+           background-image: linear-gradient(to bottom right, #2d3748, #1a202c);
+           border: 1px solid #4b5563;
+           box-shadow: inset 0 0 15px rgba(0,0,0,0.7);
+       }
+        /* Adjusted padding and overflow for new structure */
+       .drink-card-front {
+            padding: 0;
+            justify-content: flex-start;
+        }
+       .drink-card-back {
+           transform: rotateY(180deg);
+           padding: 1rem;
+       }
 
-       /* --- Scroll Snap for Drink Cards --- */
-       #menu-grid {
-           display: flex;
-           gap: 1.5rem; /* Replaces gap in main tag */
-           overflow-x: auto;
-           scroll-snap-type: x mandatory;
-           scroll-padding: 1rem; /* Offset for where the snap point is */
-           -webkit-overflow-scrolling: touch;
-           padding: 1rem; /* Add horizontal padding for aesthetics */
-       }
-       /* Hide scrollbar */
-       #menu-grid::-webkit-scrollbar { display: none; }
-       #menu-grid { -ms-overflow-style: none; scrollbar-width: none; }
+       .font-condensed {
+           font-family: 'Roboto Condensed', sans-serif;
+       }
+       .recipe-list {
+           list-style: disc;
+           margin-left: 1.5rem;
+           line-height: 1.6;
+       }
+       .modal {
+           transition: opacity 0.3s ease-in-out;
+       }
 
-       #menu-grid > .drink-card {
-           flex: 0 0 90%;
-           scroll-snap-align: center;
-       }
-       
-       @media (min-width: 768px) { /* md breakpoint */
-           #menu-grid > .drink-card {
-               flex-basis: 45%;
-           }
-       }
-        @media (min-width: 1024px) { /* lg breakpoint */
-           #menu-grid > .drink-card {
-               flex-basis: 31%; /* A bit less than a third to show there's more */
-           }
-       }
+       /* --- Scroll Snap for Drink Cards --- */
+       #menu-grid {
+           display: flex;
+           gap: 1.5rem; /* Replaces gap in main tag */
+           overflow-x: auto;
+           scroll-snap-type: x mandatory;
+           scroll-padding: 1rem; /* Offset for where the snap point is */
+           -webkit-overflow-scrolling: touch;
+           padding: 1rem; /* Add horizontal padding for aesthetics */
+       }
+       /* Hide scrollbar */
+       #menu-grid::-webkit-scrollbar { display: none; }
+       #menu-grid { -ms-overflow-style: none; scrollbar-width: none; }
 
-       @keyframes ride {
-           0%, 100% { transform: translateY(0) rotate(-10deg); }
-           50% { transform: translateY(-3px) rotate(-5deg); }
-       }
+       #menu-grid > .drink-card {
+           flex: 0 0 90%;
+           scroll-snap-align: center;
+       }
+       
+       @media (min-width: 768px) { /* md breakpoint */
+           #menu-grid > .drink-card {
+               flex-basis: 45%;
+           }
+       }
+        @media (min-width: 1024px) { /* lg breakpoint */
+           #menu-grid > .drink-card {
+               flex-basis: 31%; /* A bit less than a third to show there's more */
+           }
+       }
 
-       @keyframes roll {
-           0% { transform: rotate(0deg) scale(1); }
-           25% { transform: rotate(90deg) scale(1.1); }
-           50% { transform: rotate(180deg) scale(1); }
-           75% { transform: rotate(270deg) scale(1.1); }
-           100% { transform: rotate(360deg) scale(1); }
-       }
-       
-       .filter-btn, .flavor-filter-btn {
-           font-family: 'Roboto Condensed', sans-serif;
-           font-weight: 700;
-           text-transform: uppercase;
-           background-color: #1a202c;
-           border: 2px solid #111827;
-           border-bottom-color: #4a5568;
-           color: #a0aec0;
-           padding: 0.5rem 1rem;
-           border-radius: 0.375rem;
-           box-shadow: inset 0 2px 4px rgba(0,0,0,0.6), 0 1px 1px rgba(255,255,255,0.1);
-           transition: all 0.15s ease-out;
-           transform: translateY(0);
-           flex-shrink: 0; /* Prevent buttons from shrinking */
-       }
-       .filter-btn:hover, .flavor-filter-btn:hover {
-           background-color: #2d3748;
-           color: #e2e8f0;
-       }
-       .filter-btn.active-filter, .flavor-filter-btn.active-filter {
-           background-color: #f59e0b;
-           color: #1a202c;
-           border-color: #dd6b20;
-           border-top-color: #f6ad55;
-           transform: translateY(1px);
-           box-shadow: inset 0 3px 6px rgba(0,0,0,0.4);
-           text-shadow: 0 1px 1px rgba(255,255,255,0.2);
-       }
-       .filter-btn.active-filter i, .flavor-filter-btn.active-filter i {
-           color: #1a202c !important;
-       }
-       .filter-btn i, .flavor-filter-btn i {
-           transition: color 0.15s ease-out;
-       }
+       @keyframes ride {
+           0%, 100% { transform: translateY(0) rotate(-10deg); }
+           50% { transform: translateY(-3px) rotate(-5deg); }
+       }
 
-       .toggle-text {
-           font-family: 'Black Ops One', cursive;
-           font-size: 0.8rem;
-           text-transform: uppercase;
-           color: #a0aec0;
-           letter-spacing: 1px;
-           position: absolute;
-           left: 0;
-           right: 0;
-           text-align: right; /* Changed from center */
-           padding-right: 12px; /* Added padding */
-           pointer-events: none;
-           z-index: 0;
-           text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-           transition: color 0.2s ease-in-out;
-       }
-       .toggle-switch.on .toggle-text {
-           color: #f59e0b;
-       }
-       .toggle-switch {
-           width: 160px; /* Made even longer */
-           height: 44px;
-           background-image: linear-gradient(to top, #1a202c, #2d3748);
-           border-radius: 6px;
-           padding: 4px;
-           cursor: pointer;
-           border: 2px solid #111827;
-           border-bottom-color: #4a5568;
-           box-shadow: inset 0 2px 4px rgba(0,0,0,0.6), 0 1px 1px rgba(255,255,255,0.1);
-           position: relative;
-           display: flex;
-           align-items: center;
-           justify-content: flex-start; /* Start nub at the left */
-           transition: background-color 0.2s ease-in-out;
-       }
-       
-       .toggle-switch .toggle-nub {
-           width: 32px;
-           height: 32px;
-           border-radius: 4px;
-           background-image: linear-gradient(to top, #6b7280, #e5e7eb, #6b7280); /* Chrome effect */
-           box-shadow: 0 2px 4px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.2);
-           transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Added springy transition */
-           display: flex;
-           align-items: center;
-           justify-content: center;
-           position: relative;
-           z-index: 10;
-       }
-       .toggle-switch.on .toggle-nub {
-           transform: translateX(120px); /* Move right: new_width - (2*padding) - nub_width -> 160 - 8 - 32 = 120 */
-       }
-       .toggle-switch .toggle-nub i {
-           font-size: 1rem;
-           color: #1a202c;
-           text-shadow: 0 1px 0 rgba(255,255,255,0.2);
-           transition: transform 0.2s ease-in-out;
-       }
-       #bar-stock-toggle.on .toggle-nub i {
-           animation: ride 0.5s ease-in-out infinite;
-       }
-       #suggest-drink-toggle.on .toggle-nub i {
-           animation: roll 0.4s linear;
-       }
-       
-       #show-story-link {
-           font-family: 'Rye', cursive;
-           color: #f59e0b; /* amber-500 */
-           cursor: pointer;
-           transition: all 0.2s ease-in-out;
-           text-shadow: 1px 1px 2px #000;
-           font-size: 1rem; /* text-base, was text-xl */
-           line-height: 1; /* Tighten up vertical spacing */
-       }
-       #show-story-link:hover {
-           color: #fcd34d; /* amber-300 */
-           transform: scale(1.05);
-       }
+       @keyframes roll {
+           0% { transform: rotate(0deg) scale(1); }
+           25% { transform: rotate(90deg) scale(1.1); }
+           50% { transform: rotate(180deg) scale(1); }
+           75% { transform: rotate(270deg) scale(1.1); }
+           100% { transform: rotate(360deg) scale(1); }
+       }
+       
+       .filter-btn, .flavor-filter-btn {
+           font-family: 'Roboto Condensed', sans-serif;
+           font-weight: 700;
+           text-transform: uppercase;
+           background-color: #1a202c;
+           border: 2px solid #111827;
+           border-bottom-color: #4a5568;
+           color: #a0aec0;
+           padding: 0.5rem 1rem;
+           border-radius: 0.375rem;
+           box-shadow: inset 0 2px 4px rgba(0,0,0,0.6), 0 1px 1px rgba(255,255,255,0.1);
+           transition: all 0.15s ease-out;
+           transform: translateY(0);
+           flex-shrink: 0; /* Prevent buttons from shrinking */
+       }
+       .filter-btn:hover, .flavor-filter-btn:hover {
+           background-color: #2d3748;
+           color: #e2e8f0;
+       }
+       .filter-btn.active-filter, .flavor-filter-btn.active-filter {
+           background-color: #f59e0b;
+           color: #1a202c;
+           border-color: #dd6b20;
+           border-top-color: #f6ad55;
+           transform: translateY(1px);
+           box-shadow: inset 0 3px 6px rgba(0,0,0,0.4);
+           text-shadow: 0 1px 1px rgba(255,255,255,0.2);
+       }
+       .filter-btn.active-filter i, .flavor-filter-btn.active-filter i {
+           color: #1a202c !important;
+       }
+       .filter-btn i, .flavor-filter-btn i {
+           transition: color 0.15s ease-out;
+       }
 
-       /* --- STICKY BOTTOM FILTER BAR --- */
-       .filter-bar-container {
-           position: sticky;
-           bottom: 0;
-           z-index: 40;
-           background-color: #111827; /* Darker than body bg */
-           background-image: linear-gradient(to top, rgba(17, 24, 39, 1) 50%, rgba(17, 24, 39, 0.9));
-           box-shadow: 0 -10px 20px rgba(0,0,0,0.5);
-           border-top: 2px solid #374151; /* Gray-700 */
-       }
-       #category-filter-nav, #flavor-filter-nav {
-           display: flex;
-           overflow-x: auto; /* Enable horizontal scrolling */
-           -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-           padding: 0.5rem 1rem; /* Reduced padding */
-       }
-       #flavor-filter-nav {
-            border-bottom: 1px solid #374151;
-            padding-top: 0.25rem; /* Reduced padding */
-            padding-bottom: 0.25rem; /* Reduced padding */
-       }
-       /* Hide scrollbar for a cleaner look */
-       #category-filter-nav::-webkit-scrollbar, #flavor-filter-nav::-webkit-scrollbar {
-           display: none;
-       }
-       #category-filter-nav, #flavor-filter-nav {
-           -ms-overflow-style: none;  /* IE and Edge */
-           scrollbar-width: none;  /* Firefox */
-       }
-       
-       footer {
-           padding-bottom: 120px; /* Reduced padding */
-       }
+       .toggle-text {
+           font-family: 'Black Ops One', cursive;
+           font-size: 0.8rem;
+           text-transform: uppercase;
+           color: #a0aec0;
+           letter-spacing: 1px;
+           position: absolute;
+           left: 0;
+           right: 0;
+           text-align: right; /* Changed from center */
+           padding-right: 12px; /* Added padding */
+           pointer-events: none;
+           z-index: 0;
+           text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+           transition: color 0.2s ease-in-out;
+       }
+       .toggle-switch.on .toggle-text {
+           color: #f59e0b;
+       }
+       .toggle-switch {
+           width: 160px; /* Made even longer */
+           height: 44px;
+           background-image: linear-gradient(to top, #1a202c, #2d3748);
+           border-radius: 6px;
+           padding: 4px;
+           cursor: pointer;
+           border: 2px solid #111827;
+           border-bottom-color: #4a5568;
+           box-shadow: inset 0 2px 4px rgba(0,0,0,0.6), 0 1px 1px rgba(255,255,255,0.1);
+           position: relative;
+           display: flex;
+           align-items: center;
+           justify-content: flex-start; /* Start nub at the left */
+           transition: background-color 0.2s ease-in-out;
+       }
+       
+       .toggle-switch .toggle-nub {
+           width: 32px;
+           height: 32px;
+           border-radius: 4px;
+           background-image: linear-gradient(to top, #6b7280, #e5e7eb, #6b7280); /* Chrome effect */
+           box-shadow: 0 2px 4px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.2);
+           transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Added springy transition */
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           position: relative;
+           z-index: 10;
+       }
+       .toggle-switch.on .toggle-nub {
+           transform: translateX(120px); /* Move right: new_width - (2*padding) - nub_width -> 160 - 8 - 32 = 120 */
+       }
+       .toggle-switch .toggle-nub i {
+           font-size: 1rem;
+           color: #1a202c;
+           text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+           transition: transform 0.2s ease-in-out;
+       }
+       #bar-stock-toggle.on .toggle-nub i {
+           animation: ride 0.5s ease-in-out infinite;
+       }
+       #suggest-drink-toggle.on .toggle-nub i {
+           animation: roll 0.4s linear;
+       }
+       
+       #show-story-link {
+           font-family: 'Rye', cursive;
+           color: #f59e0b; /* amber-500 */
+           cursor: pointer;
+           transition: all 0.2s ease-in-out;
+           text-shadow: 1px 1px 2px #000;
+           font-size: 1rem; /* text-base, was text-xl */
+           line-height: 1; /* Tighten up vertical spacing */
+       }
+       #show-story-link:hover {
+           color: #fcd34d; /* amber-300 */
+           transform: scale(1.05);
+       }
 
-       /* --- INTERACTIVE BAR STOCK --- */
-       .ingredient-btn.out-of-stock {
-           opacity: 0.5;
-           background-color: #374151; /* gray-700 */
-           text-decoration: line-through;
-       }
-       .ingredient-btn.out-of-stock:hover {
-           background-color: #4b5563; /* gray-600 */
-       }
-       
-       /* Spirit List Modal Styles */
-       .spirit-drink-link {
-           background: none;
-           border: none;
-           color: #a0aec0;
-           text-align: left;
-           padding: 0.25rem 0;
-           cursor: pointer;
-           transition: color 0.2s ease-in-out;
-       }
-       .spirit-drink-link:hover {
-           color: #f59e0b;
-       }
+       /* --- STICKY BOTTOM FILTER BAR --- */
+       .filter-bar-container {
+           position: sticky;
+           bottom: 0;
+           z-index: 40;
+           background-color: #111827; /* Darker than body bg */
+           background-image: linear-gradient(to top, rgba(17, 24, 39, 1) 50%, rgba(17, 24, 39, 0.9));
+           box-shadow: 0 -10px 20px rgba(0,0,0,0.5);
+           border-top: 2px solid #374151; /* Gray-700 */
+       }
+       #category-filter-nav, #flavor-filter-nav {
+           display: flex;
+           overflow-x: auto; /* Enable horizontal scrolling */
+           -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+           padding: 0.5rem 1rem; /* Reduced padding */
+       }
+       #flavor-filter-nav {
+            border-bottom: 1px solid #374151;
+            padding-top: 0.25rem; /* Reduced padding */
+            padding-bottom: 0.25rem; /* Reduced padding */
+       }
+       /* Hide scrollbar for a cleaner look */
+       #category-filter-nav::-webkit-scrollbar, #flavor-filter-nav::-webkit-scrollbar {
+           display: none;
+       }
+       #category-filter-nav, #flavor-filter-nav {
+           -ms-overflow-style: none;  /* IE and Edge */
+           scrollbar-width: none;  /* Firefox */
+       }
+       
+       footer {
+           padding-bottom: 120px; /* Reduced padding */
+       }
 
-   </style>
+       /* --- INTERACTIVE BAR STOCK --- */
+       .ingredient-btn.out-of-stock {
+           opacity: 0.5;
+           background-color: #374151; /* gray-700 */
+           text-decoration: line-through;
+       }
+       .ingredient-btn.out-of-stock:hover {
+           background-color: #4b5563; /* gray-600 */
+       }
+       
+       /* Spirit List Modal Styles */
+       .spirit-drink-link {
+           background: none;
+           border: none;
+           color: #a0aec0;
+           text-align: left;
+           padding: 0.25rem 0;
+           cursor: pointer;
+           transition: color 0.2s ease-in-out;
+       }
+       .spirit-drink-link:hover {
+           color: #f59e0b;
+       }
+
+   </style>
 </head>
 <body class="text-gray-300">
 
-   <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+   <div class="container mx-auto p-4 md:p-8 max-w-7xl">
 
-       <header class="text-center mb-6">
-           <div id="header-logo-container" class="h-24 md:h-28 w-full max-w-3xl mx-auto flex items-center justify-center mb-4">
-               <h1>NOMADS</h1>
-           </div>
-           <div class="text-center">
-                <p id="show-story-link">The Legend of Cowboy</p>
-           </div>
-           <!-- UPDATED: Reduced gap between buttons for better mobile fit -->
-           <div class="flex justify-center items-center flex-wrap gap-2 mt-3">
-               <button id="show-by-spirit-btn" class="filter-btn"><i class="fas fa-wine-bottle mr-2"></i>By Spirit</button>
-               <div id="bar-stock-toggle" class="toggle-switch">
-                   <div class="toggle-nub"><i class="fas fa-motorcycle"></i></div>
-                   <span class="toggle-text">Bar Stock</span>
-               </div>
-               <div id="suggest-drink-toggle" class="toggle-switch">
-                   <div class="toggle-nub"><i class="fas fa-dice"></i></div>
-                   <span class="toggle-text">Roll Dice</span>
-               </div>
-               <button id="flip-all-btn" class="filter-btn"><i class="fas fa-sync-alt mr-2"></i>Flip All</button>
-               <!-- ADDED: Fullscreen button -->
-               <button id="fullscreen-btn" class="filter-btn"><i id="fullscreen-icon" class="fas fa-expand mr-2"></i><span id="fullscreen-text">Full</span></button>
-           </div>
-       </header>
+       <header class="text-center mb-6">
+           <div id="header-logo-container" class="h-24 md:h-28 w-full max-w-3xl mx-auto flex items-center justify-center mb-4">
+               <h1>NOMADS</h1>
+           </div>
+           <div class="text-center">
+                <p id="show-story-link">The Legend of Cowboy</p>
+           </div>
+                      <div class="flex justify-center items-center flex-wrap gap-2 mt-3">
+               <button id="show-by-spirit-btn" class="filter-btn"><i class="fas fa-wine-bottle mr-2"></i>By Spirit</button>
+               <div id="bar-stock-toggle" class="toggle-switch">
+                   <div class="toggle-nub"><i class="fas fa-motorcycle"></i></div>
+                   <span class="toggle-text">Bar Stock</span>
+               </div>
+               <div id="suggest-drink-toggle" class="toggle-switch">
+                   <div class="toggle-nub"><i class="fas fa-dice"></i></div>
+                   <span class="toggle-text">Roll Dice</span>
+               </div>
+               <button id="flip-all-btn" class="filter-btn"><i class="fas fa-sync-alt mr-2"></i>Flip All</button>
+                              <button id="fullscreen-btn" class="filter-btn"><i id="fullscreen-icon" class="fas fa-expand mr-2"></i><span id="fullscreen-text">Full</span></button>
+           </div>
+       </header>
 
-       <div id="filter-status" class="text-center my-4"></div>
+       <div id="filter-status" class="text-center my-4"></div>
 
-       <main id="menu-grid" class="mt-4">
-       </main>
+       <main id="menu-grid" class="mt-4">
+       </main>
 
-       <footer class="mt-12 md:mt-20 pt-8 border-t-2 border-gray-700 text-center">
-           <!-- Content was moved to the header -->
-       </footer>
+       <footer class="mt-12 md:mt-20 pt-8 border-t-2 border-gray-700 text-center">
+                  </footer>
 
-   </div>
-   
-   <!-- Filter bar -->
-   <div class="filter-bar-container">
-       <nav id="flavor-filter-nav" class="gap-2"></nav>
-       <nav id="category-filter-nav" class="gap-2">
-           <button data-category="all" class="filter-btn active-filter">All</button>
-           <button data-category="signature" class="filter-btn"><i class="fas fa-skull mr-2 text-amber-400"></i>Signature</button>
-           <button data-category="classics" class="filter-btn"><i class="fas fa-trophy mr-2 text-yellow-500"></i>Classics</button>
-           <button data-category="whiskey" class="filter-btn"><i class="fas fa-whiskey-glass mr-2 text-orange-400"></i>Whiskey</button>
-           <button data-category="vodka" class="filter-btn"><i class="fas fa-skull-crossbones mr-2 text-blue-300"></i>Vodka</button>
-           <button data-category="gin" class="filter-btn"><i class="fas fa-leaf mr-2 text-green-400"></i>Gin</button>
-           <button data-category="rum" class="filter-btn"><i class="fas fa-anchor mr-2 text-yellow-800"></i>Rum</button>
-           <button data-category="dogs" class="filter-btn"><i class="fas fa-dog mr-2 text-stone-500"></i>Dogs</button>
-           <button data-category="tequila" class="filter-btn"><i class="fas fa-hat-cowboy-side mr-2 text-yellow-600"></i>Tequila</button>
-           <button data-category="schnapps" class="filter-btn"><i class="fas fa-mortar-pestle mr-2 text-purple-400"></i>Liqueurs</button>
-       </nav>
-   </div>
+   </div>
+   
+      <div class="filter-bar-container">
+       <nav id="flavor-filter-nav" class="gap-2"></nav>
+       <nav id="category-filter-nav" class="gap-2">
+           <button data-category="all" class="filter-btn active-filter">All</button>
+           <button data-category="signature" class="filter-btn"><i class="fas fa-skull mr-2 text-amber-400"></i>Signature</button>
+           <button data-category="classics" class="filter-btn"><i class="fas fa-trophy mr-2 text-yellow-500"></i>Classics</button>
+           <button data-category="whiskey" class="filter-btn"><i class="fas fa-whiskey-glass mr-2 text-orange-400"></i>Whiskey</button>
+           <button data-category="vodka" class="filter-btn"><i class="fas fa-skull-crossbones mr-2 text-blue-300"></i>Vodka</button>
+           <button data-category="gin" class="filter-btn"><i class="fas fa-leaf mr-2 text-green-400"></i>Gin</button>
+           <button data-category="rum" class="filter-btn"><i class="fas fa-anchor mr-2 text-yellow-800"></i>Rum</button>
+           <button data-category="dogs" class="filter-btn"><i class="fas fa-dog mr-2 text-stone-500"></i>Dogs</button>
+           <button data-category="tequila" class="filter-btn"><i class="fas fa-hat-cowboy-side mr-2 text-yellow-600"></i>Tequila</button>
+           <button data-category="schnapps" class="filter-btn"><i class="fas fa-mortar-pestle mr-2 text-purple-400"></i>Liqueurs</button>
+       </nav>
+   </div>
 
 
-   <!-- Modals -->
-   <div id="story-modal" class="modal fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 hidden opacity-0 z-50">
-       <div class="bg-gray-800 rounded-lg shadow-xl w-full max-w-2xl max-h-[95vh] overflow-y-auto border border-gray-600">
-           <div class="p-6">
-               <div class="flex justify-between items-center mb-4">
-                   <h2 class="text-2xl font-bold text-white">The Legend of Cowboy</h2>
-                   <button class="close-modal-btn text-gray-400 hover:text-white text-3xl">&times;</button>
-               </div>
-               <div class="patch border-2 border-gray-600 p-6 rounded-lg mx-auto bg-gray-900/50">
-                   <p class="text-gray-400 font-rye text-lg leading-relaxed">
-                       They say a man named Cowboy, built like a mountain and quiet as a shadow, rode a Harley that sounded like thunder breaking over a graveyard. He’d show up just when a traveler was broken down, wrench on the engine, share a swig from his flask, and be gone before you could properly thank him. Some say he’s a ghost, others say he’s a nomad. We say he’s a damn good reason to keep a bottle of the good stuff ready.
-                   </p>
-                   <div class="border-t-2 border-dashed border-gray-600 my-6"></div>
-                   <p class="text-gray-400 italic mb-4 text-center">Every rider has a story. What's yours?</p>
-               </div>
-           </div>
-       </div>
-   </div>
+      <div id="story-modal" class="modal fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 hidden opacity-0 z-50">
+       <div class="bg-gray-800 rounded-lg shadow-xl w-full max-w-2xl max-h-[95vh] overflow-y-auto border border-gray-600">
+           <div class="p-6">
+               <div class="flex justify-between items-center mb-4">
+                   <h2 class="text-2xl font-bold text-white">The Legend of Cowboy</h2>
+                   <button class="close-modal-btn text-gray-400 hover:text-white text-3xl">&times;</button>
+               </div>
+               <div class="patch border-2 border-gray-600 p-6 rounded-lg mx-auto bg-gray-900/50">
+                   <p class="text-gray-400 font-rye text-lg leading-relaxed">
+                       They say a man named Cowboy, built like a mountain and quiet as a shadow, rode a Harley that sounded like thunder breaking over a graveyard. He’d show up just when a traveler was broken down, wrench on the engine, share a swig from his flask, and be gone before you could properly thank him. Some say he’s a ghost, others say he’s a nomad. We say he’s a damn good reason to keep a bottle of the good stuff ready.
+                   </p>
+                   <div class="border-t-2 border-dashed border-gray-600 my-6"></div>
+                   <p class="text-gray-400 italic mb-4 text-center">Every rider has a story. What's yours?</p>
+               </div>
+           </div>
+       </div>
+   </div>
 
-   <div id="bar-stock-modal" class="modal fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 hidden opacity-0 z-50">
-       <div class="bg-gray-800 rounded-lg shadow-xl w-full max-w-2xl max-h-[95vh] flex flex-col border border-gray-600">
-           <div class="p-6 border-b border-gray-600">
-               <div class="flex justify-between items-center"><h2 class="text-2xl font-bold text-white">Bar Stock</h2><button class="close-modal-btn text-gray-400 hover:text-white text-3xl">&times;</button></div>
-           </div>
-           <div id="bar-stock-content" class="p-6 text-gray-300 overflow-y-auto">
-               <div>
-                   <h2 class="text-xl text-green-400 mb-4">IN STOCK</h2>
-                   <div id="in-stock-lists"></div>
-               </div>
-               <div class="border-t-2 border-dashed border-gray-600 my-6"></div>
-               <div>
-                   <h2 class="text-xl text-red-400 mb-4">OUT OF STOCK</h2>
-                   <div id="out-of-stock-lists"></div>
-               </div>
-           </div>
-       </div>
-   </div>
+   <div id="bar-stock-modal" class="modal fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 hidden opacity-0 z-50">
+       <div class="bg-gray-800 rounded-lg shadow-xl w-full max-w-2xl max-h-[95vh] flex flex-col border border-gray-600">
+           <div class="p-6 border-b border-gray-600">
+               <div class="flex justify-between items-center"><h2 class="text-2xl font-bold text-white">Bar Stock</h2><button class="close-modal-btn text-gray-400 hover:text-white text-3xl">&times;</button></div>
+           </div>
+           <div id="bar-stock-content" class="p-6 text-gray-300 overflow-y-auto">
+               <div>
+                   <h2 class="text-xl text-green-400 mb-4">IN STOCK</h2>
+                   <div id="in-stock-lists"></div>
+               </div>
+               <div class="border-t-2 border-dashed border-gray-600 my-6"></div>
+               <div>
+                   <h2 class="text-xl text-red-400 mb-4">OUT OF STOCK</h2>
+                   <div id="out-of-stock-lists"></div>
+               </div>
+           </div>
+       </div>
+   </div>
 
-   <div id="suggest-drink-modal" class="modal fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 hidden opacity-0 z-50">
-       <div class="bg-gray-800 rounded-lg shadow-xl w-full max-w-md text-center p-6 border border-gray-600">
-           <div class="flex justify-between items-start mb-4">
-                <h2 class="text-2xl font-bold text-white">Roll the Dice</h2>
-                <button class="close-modal-btn text-gray-400 hover:text-white text-3xl -mt-2">&times;</button>
-           </div>
-           <div id="dice-roller-content">
-               <!-- Content injected by JS -->
-           </div>
-       </div>
-   </div>
+   <div id="suggest-drink-modal" class="modal fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 hidden opacity-0 z-50">
+       <div class="bg-gray-800 rounded-lg shadow-xl w-full max-w-md text-center p-6 border border-gray-600">
+           <div class="flex justify-between items-start mb-4">
+                <h2 class="text-2xl font-bold text-white">Roll the Dice</h2>
+                <button class="close-modal-btn text-gray-400 hover:text-white text-3xl -mt-2">&times;</button>
+           </div>
+           <div id="dice-roller-content">
+                          </div>
+       </div>
+   </div>
 
-   <div id="spirit-list-modal" class="modal fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 hidden opacity-0 z-50">
-       <div class="bg-gray-800 rounded-lg shadow-xl w-full max-w-2xl max-h-[95vh] flex flex-col border border-gray-600">
-            <div class="p-6 border-b border-gray-600">
-               <div class="flex justify-between items-center">
-                   <h2 class="text-2xl font-bold text-white">Drinks by Spirit</h2>
-                   <button class="close-modal-btn text-gray-400 hover:text-white text-3xl">&times;</button>
-               </div>
-           </div>
-           <div id="spirit-list-content" class="p-6 text-gray-300 overflow-y-auto">
-               <!-- Content will be injected by JS -->
-           </div>
-       </div>
-   </div>
+   <div id="spirit-list-modal" class="modal fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 hidden opacity-0 z-50">
+       <div class="bg-gray-800 rounded-lg shadow-xl w-full max-w-2xl max-h-[95vh] flex flex-col border border-gray-600">
+            <div class="p-6 border-b border-gray-600">
+               <div class="flex justify-between items-center">
+                   <h2 class="text-2xl font-bold text-white">Drinks by Spirit</h2>
+                   <button class="close-modal-btn text-gray-400 hover:text-white text-3xl">&times;</button>
+               </div>
+           </div>
+           <div id="spirit-list-content" class="p-6 text-gray-300 overflow-y-auto">
+                          </div>
+       </div>
+   </div>
 
 
-   <script>
+   <script>
+       html {
+           scroll-behavior: smooth;
+       
+
        // --- Cocktail Data ---
        const cocktails = [
             // --- SIGNATURE DRINKS ---
@@ -1002,6 +1064,7 @@
    </script>
 </body>
 </html>
+
 
 
 
